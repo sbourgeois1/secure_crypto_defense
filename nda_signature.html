@@ -104,7 +104,7 @@
     </footer>
 
     <script>
-    # --- CHARGEMENT AUTOMATIQUE DES DONNÉES CACHÉES AU CHARGEMENT DE LA PAGE ---
+    // --- CHARGEMENT AUTOMATIQUE DES DONNÉES CACHÉES AU CHARGEMENT DE LA PAGE ---
     document.addEventListener("DOMContentLoaded", () => {
         document.getElementById('hidden_email').value = localStorage.getItem('prospect_email') || 'unknown@domain.com';
         document.getElementById('hidden_name').value = localStorage.getItem('prospect_name') || 'Unknown';

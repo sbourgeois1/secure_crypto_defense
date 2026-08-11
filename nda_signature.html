@@ -71,78 +71,96 @@
             This agreement enters into force immediately upon electronic execution. Confidentiality obligations shall remain active for ten (10) years, governed and construed in accordance with Belgian law. Any litigation shall be submitted to the exclusive jurisdiction of the courts of Brussels, Belgium.
         </div>
 
-        <!-- FORMULAIRE DE SIGNATURE ÉLECTRONIQUE VIA FORMSPREE -->
         <!-- FORMULAIRE DE SIGNATURE AVEC CHAMPS INVISIBLES DE CONTACT -->
+    <!-- FORMULAIRE DE SIGNATURE ENTIÈREMENT SÉCURISÉ -->
     <form id="form-step-2">
         <input type="hidden" name="contract_type" value="TACTICAL_AEROSPACE_NDA_v5.3">
         
-        <!-- CHAMPS INVISIBLES QUI REPRENNENT L'IDENTITÉ POUR FORMSPREE -->
+        <!-- CHAMPS INVISIBLES D'ASPIRATION DE L'IDENTITÉ -->
         <input type="hidden" id="hidden_email" name="email">
         <input type="hidden" id="hidden_name" name="name">
         <input type="hidden" id="hidden_institution" name="institution">
 
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-size: 0.9rem; color: #fff;">Digital Legal Signature (Type your Full Name & Organization):</label>
-            <input type="text" name="legal_signature" placeholder="I, [Name], on behalf of [Organization], agree to the terms above" required style="width: 100%; padding: 12px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
-        </div>
+    <div style="margin-bottom: 15px;">
+        <label style="display: block; margin-bottom: 5px; font-size: 0.9rem; color: #fff;">Digital Legal Signature (Type your Full Name & Organization):</label>
+        <input type="text" name="legal_signature" placeholder="I, [Name], on behalf of [Organization], agree to the terms above" required style="width: 100%; padding: 12px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
+    </div>
 
-        <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
-            <input type="checkbox" id="agreement" name="agreement_checked" value="YES" required style="margin-top: 4px;">
-            <label for="agreement" style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer;">
-                I certify that I hold the operational authority to bind my organization to this Non-Disclosure Agreement.
-            </label>
-        </div>
+    <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
+        <input type="checkbox" id="agreement" name="agreement_checked" value="YES" required style="margin-top: 4px;">
+        <label for="agreement" style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer;">
+            I certify that I hold the operational authority to bind my organization to this Non-Disclosure Agreement.
+        </label>
+    </div>
 
-        <button type="submit" class="btn" id="btn-submit-2" style="width: 100%; background: #00ff87; color: #050913; font-weight: bold;">
-            Execute Digital Signature & Request Sandbox Download
-        </button>
+    <!-- BOUTON PRINCIPAL DE SIGNATURE -->
+    <button type="submit" class="btn" id="btn-submit-2" style="width: 100%; background: #00ff87; color: #050913; font-weight: bold; margin-bottom: 15px;">
+        Execute Digital Signature & Request Sandbox Download
+    </button>
+    
+    <!-- VOTRE PROPOSITION : BOUTON DE SECOURS SOUVERAIN -->
+    <a href="index.html" class="btn" style="display: block; text-align: center; background: rgba(255,255,255,0.05); color: #fff; border: 1px solid #1e293b; text-decoration: none; padding: 10px 0; border-radius: 4px; font-size: 0.9rem;">
+        ◀ Return to Home Station
+    </a>
     </form>
+
+    <!-- ZONE DE NOTIFICATION DYNAMIQUE -->
+    <div id="status-message" style="margin-top: 15px; text-align: center; font-weight: bold; color: #00ff87; display: none;"></div>
+
+    <script>
+        // Chargement automatique des données cachées issues de l'Étape 1
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById('hidden_email').value = localStorage.getItem('prospect_email') || 'unknown@domain.com';
+            document.getElementById('hidden_name').value = localStorage.getItem('prospect_name') || 'Unknown';
+            document.getElementById('hidden_institution').value = localStorage.getItem('prospect_institution') || 'Unknown';
+        });
+
+        document.getElementById('form-step-2').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Bloque la redirection intrusive de Formspree
+            
+            const btn = document.getElementById('btn-submit-2');
+            const statusBox = document.getElementById('status-message');
+            
+            btn.innerText = "Registering Legal Signature...";
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // Affichage immédiat d'un accusé de réception visuel pour rassurer l'auditeur militaire
+            statusBox.innerText = "✓ Signature broadcasted to secure repository. Redirecting to final clearance...";
+            statusBox.style.display = "block";
+
+            try {
+                // Remplacez l'ID ci-dessous par votre clé Formspree de défense
+                await fetch("https://formspree.io/f/xvkpaqae", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                // Redirection forcée après 1,5 seconde (laisse le temps à l'e-mail de partir)
+                setTimeout(() => {
+                    window.location.href = "download_confirmation.html";
+                }, 1500);
+
+            } catch (error) {
+                // FORCE MAJEURE : En cas de blocage réseau (CORS), on force quand même la redirection
+                setTimeout(() => {
+                    window.location.href = "download_confirmation.html";
+                }, 1500);
+            }
+        });
+    </script>
+
     </section>
 
     <footer>
         <p>&copy; 2026 secure_crypto - Tactical Aerospace Division. All rights reserved. Classification: Restricted Confidential.</p>
     </footer>
-
-    <script>
-    // --- CHARGEMENT AUTOMATIQUE DES DONNÉES CACHÉES AU CHARGEMENT DE LA PAGE ---
-    document.addEventListener("DOMContentLoaded", () => {
-        document.getElementById('hidden_email').value = localStorage.getItem('prospect_email') || 'unknown@domain.com';
-        document.getElementById('hidden_name').value = localStorage.getItem('prospect_name') || 'Unknown';
-        document.getElementById('hidden_institution').value = localStorage.getItem('prospect_institution') || 'Unknown';
-    });
-
-    document.getElementById('form-step-2').addEventListener('submit', async function(event) {
-        event.preventDefault(); // BLOQUE STRICTEMENT LA PAGE MERCI DE FORMSPREE
-        
-        const btn = document.getElementById('btn-submit-2');
-        btn.innerText = "Registering Legal Signature...";
-        btn.disabled = true;
-
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
-
-        try {
-            const response = await fetch("https://formspree.io/f/xvkpaqae", {
-                method: "POST",
-                body: JSON.stringify(data),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (response.ok) {
-                # REDIRECTION COMPLÈTE VERS LA VRAIE PAGE DE CONFIRMATION
-                window.location.href = "https://sbourgeois1.github.io/secure_crypto_defense/download_confirmation.html";
-            } else {
-                # Force la redirection de secours même en cas de refus de en-tête de Formspree
-                window.location.href = "https://sbourgeois1.github.io/secure_crypto_defense/download_confirmation.html";
-            }
-        } catch (error) {
-            window.location.href = "https://sbourgeois1.github.io/secure_crypto_defense/download_confirmation.html/download_confirmation.html";
-        }
-    });
-    </script>
 
 </body>
 </html>

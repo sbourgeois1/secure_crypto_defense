@@ -107,6 +107,13 @@
     <!-- ZONE DE NOTIFICATION DYNAMIQUE -->
     <div id="status-message" style="margin-top: 15px; text-align: center; font-weight: bold; color: #00ff87; display: none;"></div>
 
+
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 secure_crypto - Tactical Aerospace Division. All rights reserved. Classification: Restricted Confidential.</p>
+    </footer>
     <script>
         // Chargement automatique des données cachées issues de l'Étape 1
         document.addEventListener("DOMContentLoaded", () => {
@@ -143,9 +150,22 @@
                 });
                 
                 // Redirection forcée après 1,5 seconde (laisse le temps à l'e-mail de partir)
+
+                // Déclenchement du chrono de secours avec URL absolue sécurisée
                 setTimeout(() => {
-                    window.location.href = "download_confirmation.html";
-                }, 1500);
+                    window.location.href = "https://sbourgeois1.github.io/secure_crypto_defense/download_confirmation.html";
+                }, 1200);
+
+                // Envoi asynchrone vers Formspree
+                fetch("https://formspree.io", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }).catch(err => {});
+
 
             } catch (error) {
                 // FORCE MAJEURE : En cas de blocage réseau (CORS), on force quand même la redirection
@@ -155,12 +175,5 @@
             }
         });
     </script>
-
-    </section>
-
-    <footer>
-        <p>&copy; 2026 secure_crypto - Tactical Aerospace Division. All rights reserved. Classification: Restricted Confidential.</p>
-    </footer>
-
 </body>
 </html>

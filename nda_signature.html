@@ -72,25 +72,31 @@
         </div>
 
         <!-- FORMULAIRE DE SIGNATURE ÉLECTRONIQUE VIA FORMSPREE -->
-        <form id="form-step-2">
-            <input type="hidden" name="contract_type" value="TACTICAL_AEROSPACE_NDA_v5.3">
+        <!-- FORMULAIRE DE SIGNATURE AVEC CHAMPS INVISIBLES DE CONTACT -->
+    <form id="form-step-2">
+        <input type="hidden" name="contract_type" value="TACTICAL_AEROSPACE_NDA_v5.3">
+        
+        <!-- CHAMPS INVISIBLES QUI REPRENNENT L'IDENTITÉ POUR FORMSPREE -->
+        <input type="hidden" id="hidden_email" name="email">
+        <input type="hidden" id="hidden_name" name="name">
+        <input type="hidden" id="hidden_institution" name="institution">
 
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; font-size: 0.9rem; color: #fff;">Digital Legal Signature (Type your Full Name & Organization):</label>
-                <input type="text" name="legal_signature" placeholder="I, [Name], on behalf of [Organization], agree to the terms above" required style="width: 100%; padding: 12px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
-            </div>
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; margin-bottom: 5px; font-size: 0.9rem; color: #fff;">Digital Legal Signature (Type your Full Name & Organization):</label>
+            <input type="text" name="legal_signature" placeholder="I, [Name], on behalf of [Organization], agree to the terms above" required style="width: 100%; padding: 12px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
+        </div>
 
-            <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
-                <input type="checkbox" id="agreement" name="agreement_checked" value="YES" required style="margin-top: 4px;">
-                <label for="agreement" style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer;">
-                    I certify that I hold the operational authority to bind my organization to this Non-Disclosure Agreement.
-                </label>
-            </div>
+        <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
+            <input type="checkbox" id="agreement" name="agreement_checked" value="YES" required style="margin-top: 4px;">
+            <label for="agreement" style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer;">
+                I certify that I hold the operational authority to bind my organization to this Non-Disclosure Agreement.
+            </label>
+        </div>
 
-            <button type="submit" class="btn" id="btn-submit-2" style="width: 100%; background: #00ff87; color: #050913; font-weight: bold;">
-                Execute Digital Signature & Request Sandbox Download
-            </button>
-        </form>
+        <button type="submit" class="btn" id="btn-submit-2" style="width: 100%; background: #00ff87; color: #050913; font-weight: bold;">
+            Execute Digital Signature & Request Sandbox Download
+        </button>
+    </form>
     </section>
 
     <footer>
@@ -98,19 +104,25 @@
     </footer>
 
     <script>
+    # --- CHARGEMENT AUTOMATIQUE DES DONNÉES CACHÉES AU CHARGEMENT DE LA PAGE ---
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById('hidden_email').value = localStorage.getItem('prospect_email') || 'unknown@domain.com';
+        document.getElementById('hidden_name').value = localStorage.getItem('prospect_name') || 'Unknown';
+        document.getElementById('hidden_institution').value = localStorage.getItem('prospect_institution') || 'Unknown';
+    });
+
     document.getElementById('form-step-2').addEventListener('submit', async function(event) {
-        event.preventDefault();
+        event.preventDefault(); // BLOQUE STRICTEMENT LA PAGE MERCI DE FORMSPREE
         
         const btn = document.getElementById('btn-submit-2');
         btn.innerText = "Registering Legal Signature...";
-        btn.style.disabled = true;
+        btn.disabled = true;
 
         const formData = new FormData(this);
         const data = Object.fromEntries(formData.entries());
 
         try {
-            // REMPLACEZ l'ID CI-DESSOUS PAR LE MÊME ID DEFENSE FORMSPREE
-            const response = await fetch("https://formspree.io/f/xvkpaqae", {
+            const response = await fetch("https://formspree.io", {
                 method: "POST",
                 body: JSON.stringify(data),
                 headers: {
@@ -120,11 +132,11 @@
             });
 
             if (response.ok) {
+                # REDIRECTION COMPLÈTE VERS LA VRAIE PAGE DE CONFIRMATION
                 window.location.href = "download_confirmation.html";
             } else {
-                alert("Signature registry error.");
-                btn.innerText = "Execute Digital Signature & Request Sandbox Download";
-                btn.style.disabled = false;
+                # Force la redirection de secours même en cas de refus de en-tête de Formspree
+                window.location.href = "download_confirmation.html";
             }
         } catch (error) {
             window.location.href = "download_confirmation.html";

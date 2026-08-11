@@ -54,7 +54,8 @@
         </p>
 
         <!-- BOÎTE DE DÉFILEMENT CONTENANT LE NDA FORMEL -->
-        <div class="nda-scroll-box">
+        <!-- BOÎTE DE DÉFILEMENT SÉCURISÉE AVEC COULEURS FORCÉES (INTELLIGENT FALLBACK) -->
+        <div style="max-height: 300px; overflow-y: scroll; background-color: #0b0f1d; border: 1px solid #00ff87; padding: 20px; border-radius: 6px; font-family: 'Courier New', Courier, monospace; font-size: 0.95rem; line-height: 1.6; color: #00ff87; margin-bottom: 25px; text-align: justify; box-shadow: inset 0 0 10px rgba(0,0,0,0.5);">
             MILITARY-GRADE MUTUAL NON-DISCLOSURE AGREEMENT (NDA)<br>
             --------------------------------------------------<br>
             PROJECT: secure_crypto Geometric Matrix Evaluation Suite<br>
@@ -71,7 +72,7 @@
         </div>
 
         <!-- FORMULAIRE DE SIGNATURE ÉLECTRONIQUE VIA FORMSPREE -->
-        <form action="https://formspree.io" method="POST">
+        <form action="https://formspree.io/f/xvkpaqae" method="POST">
             <!-- Redirection finale vers l'Étape 3 : Remerciements et confirmation d'envoi -->
             <input type="hidden" name="_next" value="https://github.io">
             <input type="hidden" name="contract_type" value="TACTICAL_AEROSPACE_NDA_v5.3">

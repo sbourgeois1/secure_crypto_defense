@@ -3,38 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>secure_crypto - Mutual Non-Disclosure Agreement (MDO Audit)</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>secure_crypto - Request Successfully Certified</title>
+    <link rel="stylesheet" href="../styles.css">
     <style>
-        .nda-container {
-            max-width: 800px;
-            margin: 40px auto;
+        .confirmation-container {
+            max-width: 650px;
+            margin: 60px auto;
             background: rgba(10, 15, 29, 0.9);
             border: 1px solid var(--border);
             border-radius: 8px;
-            padding: 40px;
+            padding: 50px;
+            text-align: center;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
         }
-        .nda-scroll-box {
-            max-height: 350px;
-            overflow-y: scroll;
+        .success-icon {
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        .pipeline-box {
             background: #050913;
             border: 1px solid #1e293b;
             padding: 20px;
-            border-radius: 4px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: #cbd5e1;
-            margin-bottom: 25px;
-            text-align: justify;
-        }
-        .step-indicator {
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: bold;
-            letter-spacing: 1px;
-            color: var(--accent);
+            border-radius: 6px;
+            margin: 30px 0;
+            text-align: left;
+            font-size: 0.95rem;
+            color: var(--text-main);
         }
     </style>
 </head>
@@ -45,53 +40,25 @@
         <div class="tagline" style="color: var(--accent); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">TACTICAL AEROSPACE DIVISION</div>
     </header>
 
-    <section class="nda-container">
-        <div class="step-indicator">STEP 2 OF 3: MUTUAL NON-DISCLOSURE AGREEMENT (NDA)</div>
-        
-        <h2>Bilateral Cryptographic Evaluation Agreement</h2>
-        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px;">
-            Please read and review the defense-grade confidentiality terms below before executing the download signature.
+    <section class="confirmation-container">
+        <div class="success-icon">✓</div>
+        <h2>Bilateral NDA Successfully Executed</h2>
+        <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6;">
+            Thank you. Your organizational clearance and digital signature have been securely logged and cross-certified by our infrastructure ledger.
         </p>
 
-        <!-- BOÎTE DE DÉFILEMENT CONTENANT LE NDA FORMEL -->
-        <div class="nda-scroll-box">
-            MILITARY-GRADE MUTUAL NON-DISCLOSURE AGREEMENT (NDA)<br>
-            --------------------------------------------------<br>
-            PROJECT: secure_crypto Geometric Matrix Evaluation Suite<br>
-            CLASSIFICATION: Restricted Confidential - EU/NATO Resilient Standards<br><br>
-            
-            1. DEFINITION OF CONFIDENTIAL INFORMATION:<br>
-            "Confidential Information" encompasses all technical, algorithmic, mathematical, and architectural data provided by Dr. Ir. S. Bourgeois, including the 8D continuous manifold projection schema, the token_b temporal synchronization parameters, and the local container configurations.<br><br>
-            
-            2. STRICT NON-DISCLOSURE & INTELLECTUAL PROPERTY RESTRAINT:<br>
-            The Receiving Party formally agrees to hold all disclosed materials under the absolute seal of tactical secrecy. No reverse-engineering, duplication, or source code disassembly shall be attempted. Access is strictly limited to cleared system engineers directly assigned to this capability audit.<br><br>
-            
-            3. DURATION AND JURISDICTION:<br>
-            This agreement enters into force immediately upon electronic execution. Confidentiality obligations shall remain active for ten (10) years, governed and construed in accordance with Belgian law. Any litigation shall be submitted to the exclusive jurisdiction of the courts of Brussels, Belgium.
+        <div class="pipeline-box">
+            <h4 style="margin-top: 0; color: var(--accent); text-transform: uppercase; letter-spacing: 1px;">Next Steps in the Clearance Pipeline:</h4>
+            <ol style="padding-left: 20px; margin-bottom: 0; line-height: 1.8;">
+                <li><strong>Identity Verification:</strong> Dr. Ir. S. Bourgeois will personally audit your corporate credentials.</li>
+                <li><strong>Secure Link Dispatch:</strong> Upon successful manual validation, an encrypted download token containing the containerized local simulation package (isolated Docker Sandbox) will be sent to your verified email address a few days.</li>
+            </ol>
         </div>
 
-        <!-- FORMULAIRE DE SIGNATURE ÉLECTRONIQUE VIA FORMSPREE -->
-        <form action="https://formspree.io/f/xvkpaqae" method="POST">
-            <!-- Redirection finale vers l'Étape 3 : Remerciements et confirmation d'envoi -->
-            <input type="hidden" name="_next" value="https://sbourgeois1.github.io/secure_crypto_defense/">
-            <input type="hidden" name="contract_type" value="TACTICAL_AEROSPACE_NDA_v5.3">
-
-            <div style="margin-bottom: 15px;">
-                <label style="display: block; margin-bottom: 5px; font-size: 0.9rem; color: #fff;">Digital Legal Signature (Type your Full Name & Organization):</label>
-                <input type="text" name="legal_signature" placeholder="I, [Name], on behalf of [Organization], agree to the terms above" required style="width: 100%; padding: 12px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
-            </div>
-
-            <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
-                <input type="checkbox" id="agreement" name="agreement_checked" value="YES" required style="margin-top: 4px;">
-                <label for="agreement" style="font-size: 0.88rem; color: var(--text-muted); cursor: pointer;">
-                    I certifiy that I hold the operational authority to bind my organization to this Non-Disclosure Agreement.
-                </label>
-            </div>
-
-            <button type="submit" class="btn" style="width: 100%; background: #00ff87; color: #050913; font-weight: bold;">
-                Execute Digital Signature & Request Sandbox Download
-            </button>
-        </form>
+        <p style="font-size: 0.88rem; color: var(--text-muted);">
+            If you have urgent deployment requirements, please contact our core R&D cell directly.
+        </p>
+        <a href="index.html" class="btn" style="margin-top: 20px; display: inline-block;">Return to Tactical Division Home</a>
     </section>
 
     <footer>

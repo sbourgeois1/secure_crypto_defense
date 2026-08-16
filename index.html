@@ -57,7 +57,7 @@
             <input type="text" id="institution" name="institution" placeholder="Defence Agency / Aerospace Corporation" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
             <input type="email" id="email" name="email" placeholder="Classified / Professional Email Address" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
             <input type="text" id="phone" name="phone" placeholder="Phone number" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
-            <textarea id="message" name="infrastructure_specs" rows="4" placeholder="Specify your architectural infrastructure (MIL-STD-1553, Arinc 429, Kafka, local HSM...)" required style="width: 100%; padding: 10px; margin-bottom: 20px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px; font-family: inherit;"></textarea>
+            <textarea id="message" name="message" rows="4" placeholder="Specify your architectural infrastructure (MIL-STD-1553, Arinc 429, Kafka, local HSM...)" required style="width: 100%; padding: 10px; margin-bottom: 20px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px; font-family: inherit;"></textarea>
 
             <!-- CODE DE SÉCURITÉ RGPD POUR LE FORMULAIRE DE DÉFENSE -->
             <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
@@ -92,6 +92,7 @@
             localStorage.setItem('def_phone', data.phone);
             localStorage.setItem('def_name', data.name);
             localStorage.setItem('def_institution', data.institution);
+            localStorage.setItem('def_message', data.message || '');
 
             // CORRECTION DE L'AIGUILLAGE : Redirection forcée vers la page unifiée
             const forceRedirect = setTimeout(() => {

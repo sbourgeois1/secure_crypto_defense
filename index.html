@@ -77,8 +77,9 @@
     </footer>
 
     <script>
+        // INTERCEPTION ASYNCHRONE DE SÉCURITÉ POUR PASSER AU CAHIER DES CHARGES MILITAIRE
         document.getElementById('form-defense-step-1').addEventListener('submit', function(event) {
-            event.preventDefault(); // Bloque la redirection sauvage native
+            event.preventDefault();
             const btn = document.getElementById('btn-def-1');
             btn.innerText = "PROCESSING CLEARANCE REQ...";
             btn.disabled = true;
@@ -86,31 +87,27 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData.entries());
 
-            // Enregistrement des mémoires de session tactique
+            // Sauvegarde distincte pour l'Étape 2
             localStorage.setItem('def_email', data.email);
             localStorage.setItem('def_phone', data.phone);
             localStorage.setItem('def_name', data.name);
             localStorage.setItem('def_institution', data.institution);
 
+            // CORRECTION DE L'AIGUILLAGE : Redirection forcée vers la page unifiée
             const forceRedirect = setTimeout(() => {
                 window.location.href = "cahier_des_charges_defense.html";
             }, 1200);
 
-            // Aiguillage réseau vers votre clé de formulaire de Défense
-            fetch("https://formspree.io/f/xvkpaqae", {
+            // Envoi en arrière-plan vers Formspree
+            fetch("https://formspree.io", {
                 method: "POST",
                 body: JSON.stringify(data),
-                headers: { 
-                    'Accept': 'application/json', 
-                    'Content-Type': 'application/json' 
-                }
-            })
-            .then(() => {
+                headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+            }).then(() => {
                 clearTimeout(forceRedirect);
                 window.location.href = "cahier_des_charges_defense.html";
-            })
-            .catch(() => {
-                // Le timeout prend le relais si le réseau militaire est restrictif
+            }).catch(() => {
+                // Le timeout prend le relais si le proxy bloque la requête
             });
         });
     </script>

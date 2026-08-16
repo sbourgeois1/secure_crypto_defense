@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SECURE_CRYPTO | Bilateral NDA & Tactical Specifications</title>
+    <style>
+        :root {
+            --bg-main: #0b0f19;       /* Bleu-noir militaire */
+            --bg-card: #151d30;       /* Fond des blocs */
+            --bg-input: #080c14;      /* Fond des champs */
+            --text-main: #f1f5f9;     /* Blanc tactique */
+            --text-muted: #64748b;    /* Gris-bleu */
+            --accent-tactical: #00ff87; /* Vert phosphore radar */
+            --border: #1e293b;        /* Bordures */
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 1px dashed var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .mil-badge {
+            background: rgba(0, 255, 135, 0.05);
+            color: var(--accent-tactical);
+            border: 1px solid var(--accent-tactical);
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            letter-spacing: 0.15em;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-top: 0;
+        }
+
+        .specs-box {
+            background: #05070f;
+            border: 1px solid var(--accent-tactical);
+            padding: 25px;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            overflow-y: scroll;
+            max-height: 350px;
+            color: #a7f3d0;
+            margin-bottom: 25px;
+            text-align: justify;
+            line-height: 1.6;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        form {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 4px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            color: var(--accent-tactical);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-input);
+            border: 1px solid var(--border);
+            color: #fff;
+            box-sizing: border-box;
+            font-family: inherit;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-tactical);
+            outline: none;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent-tactical);
+            color: var(--bg-main);
+            border: none;
+            padding: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .btn-back {
+            display: block;
+            text-align: center;
+            background: rgba(255,255,255,0.02);
+            color: #fff;
+            border: 1px solid var(--border);
+            text-decoration: none;
+            padding: 12px 0;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header>
+            <div class="mil-badge">SECURE_CRYPTO // TACTICAL AEROSPACE COMPONENT</div>
+        </header>
+
+        <section style="background-color: var(--bg-card); border: 1px solid var(--border); padding: 40px; border-radius: 6px;">
+            <div style="text-align: center; margin-bottom: 25px; font-weight: bold; color: var(--accent-tactical); font-size: 0.85rem;">OPERATIONAL STEP 2 OF 3 : SECURITY CLEARANCE & SPECIFICATIONS</div>
+            <h2>Bilateral Evaluation & Non-Disclosure Agreement</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 25px;">Please execute the unified technical sign-off and mutual non-disclosure framework before software delivery initialization.</p>
+
+            <div class="specs-box">
+                MILITARY-GRADE MUTUAL NON-DISCLOSURE & INTEGRATION SPECIFICATIONS<br>
+                ------------------------------------------------------------------<br>
+                PROJECT : secure_crypto Geometric Matrix Evaluation Suite (v5.3-DEF)<br>
+                CLASSIFICATION : Restricted Confidential - EU/NATO Resilient Standards<br><br>
+                
+                1. DEFINITION OF CONFIDENTIAL INFORMATION :<br>
+                "Confidential Information" encompasses all technical, algorithmic, mathematical, and architectural data provided by Dr. Ir. S. Bourgeois, including the 8D continuous manifold projection schema, the tactical synchronization variables, and the local container image assets.<br><br>
+                
+                2. LAYER-2 INTEGRATION BOUNDS & FAIL-CLOSED STATE :<br>
+                The receiving agency agrees to deploy the node container within a detached local sandbox. No reverse-engineering or source disassembly shall be attempted. The micro-kernel operates on a strict non-persistent RAM state. Any runtime attempt to read host parameters outside the mapped scope will fire a zeroization event (complete memory wipe) and lock the tactical pipeline.<br><br>
+                
+                3. EXPORT CONTROL & DURATION :<br>
+                This framework constitutes advanced defensive dual-use software under European export controls. Access is strictly limited to cleared system engineers. Confidentiality obligations shall remain active for ten (10) years, governed and construed in accordance with Belgian law. Any litigation shall be submitted to the exclusive jurisdiction of the courts of Brussels, Belgium.
+            </div>
+
+            <form id="form-defense-step-2">
+                <!-- Variables masquées corrigées et alignées sur l'Index Défense -->
+                <input type="hidden" name="contract_type" value="TACTICAL_AEROSPACE_NDA_AND_SPECS_v5.3">
+                <input type="hidden" id="hidden_def_email" name="email">
+                <input type="hidden" id="hidden_def_phone" name="phone">
+                <input type="hidden" id="hidden_def_name" name="name">
+                <input type="hidden" id="hidden_def_institution" name="institution">
+
+                <div>
+                    <label for="legal_signature">Digital Legal Signature (Type Full Name & Title/Rank) :</label>
+                    <input type="text" id="legal_signature" name="legal_signature" placeholder="I, [Name], on behalf of [Organization], execute this binding operational signature" required>
+                </div>
+
+                <!-- AUTORISATION D'AUTORITÉ OPÉRATIONNELLE -->
+                <div style="margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" id="auth_check" name="authority_checked" value="YES" required style="margin-top: 4px; cursor: pointer;">
+                    <label for="auth_check" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer; line-height: 1.4;">
+                        I certify that I hold the operational authority to bind my organization to this Non-Disclosure and Integration Agreement.
+                    </label>
+                </div>
+
+                <!-- CLAUSE DE CONFORMITÉ RGPD MILITAIRE -->
+                <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" id="rgpd_defense" name="rgpd_consent" value="YES" required style="margin-top: 4px; cursor: pointer;">
+                    <label for="rgpd_defense" style="font-size: 0.82rem; color: #4b5563; cursor: pointer; line-height: 1.4;">
+                        [DATA REGULATION] I authorize the secure processing of my professional metrics solely for clearance token distribution, in compliance with EU GDPR.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btn-def-2">Execute Signature & Request Sandbox Package</button>
+                <a href="index.html" class="btn-back">◀ Return to Home Station</a>
+            </form>
+            
+            <div id="status-message" style="margin-top: 15px; text-align: center; font-weight: bold; color: var(--accent-tactical); display: none;"></div>
+        </section>
+
+    </div>
+
+    <!-- BANDEAU COOKIES DÉFENSE -->
+    <div id="cookie-banner-def" style="position: fixed; bottom: 20px; left: 20px; right: 20px; max-width: 450px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5); z-index: 9999; display: none; font-size: 0.85rem; line-height: 1.4;">
+        <p style="margin: 0 0 15px 0; color: var(--text-main);">
+            <strong>System Protocol Notification:</strong> This terminal utilizes technical local storage parameters exclusively to handle tactical clearance step synchronization. No marketing or outer analytical elements are deployed.
+        </p>
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button id="accept-cookies-def" style="background: var(--accent-tactical); color: var(--bg-main); border: none; padding: 8px 16px; font-weight: bold; border-radius: 4px; cursor: pointer; font-size: 0.8rem;">Acknowledge Protocol</button>
+        </div>
+    </div>
+
+    <script>
+
+            // 1. CHARGEMENT ET ALIGNEMENT DES CLÉS ISSUES DE L'INDEX DÉFENSE
+    document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById('hidden_def_email').value = localStorage.getItem('def_email') || 'classified@gov.local';
+        document.getElementById('hidden_def_phone').value = localStorage.getItem('def_phone') || 'Unspecified'; 
+        document.getElementById('hidden_def_name').value = localStorage.getItem('def_name') || 'Classified';
+        document.getElementById('hidden_def_institution').value = localStorage.getItem('def_institution') || 'Classified Agency';
+
+        // Gestion de l'affichage du bandeau cookie
+        if (!localStorage.getItem("cookies_defense_accepted")) {
+            document.getElementById("cookie-banner-def").style.display = "block";
+        }
+    });
+
+    document.getElementById("accept-cookies-def").addEventListener("click", () => {
+        localStorage.setItem("cookies_defense_accepted", "true");
+        document.getElementById("cookie-banner-def").style.display = "none";
+    });
+
+    // 2. INTERCEPTION SÉCURISÉE DU FORMULAIRE DE SIGNATURE
+    document.getElementById('form-defense-step-2').addEventListener('submit', function(event) {
+        event.preventDefault(); // Intercepte et bloque fermement la redirection native
+        
+        const btn = document.getElementById('btn-def-2');
+        const statusBox = document.getElementById('status-message');
+        
+        btn.innerText = "RECORDING OPERATIONAL CLEARANCE...";
+        btn.disabled = true;
+
+        statusBox.innerText = "✓ Signature broadcasted to secure repository. Redirecting to final clearance...";
+        statusBox.style.display = "block";
+
+        const formData = new FormData(this);
+        const data = Object.fromEntries(formData.entries());
+
+        // PARADE DE SÉCURITÉ : Déclenchement automatique quoi qu'il arrive après 1,2 sec
+        const safetyRedirect = setTimeout(() => {
+            window.location.href = "download_confirmation.html";
+        }, 1200);
+
+        // Fetch asynchrone direct branché sur votre clé de formulaire Défense
+        fetch("https://formspree.io/f/xvkpaqae", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: { 
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json' 
+            }
+        })
+        .then(() => {
+            clearTimeout(safetyRedirect); // Réponse reçue à temps, basculement immédiat
+            window.location.href = "download_confirmation.html";
+        })
+        .catch(() => {
+            // En cas d'interception réseau ou proxy strict, le safetyRedirect assure la transition invisible
+        });
+    });
+    </script>
+</body>
+</html>

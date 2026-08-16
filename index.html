@@ -58,8 +58,16 @@
             <input type="email" id="email" name="email" placeholder="Classified / Professional Email Address" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
             <input type="text" id="phone" name="phone" placeholder="Phone number" required style="width: 100%; padding: 10px; margin-bottom: 15px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px;">
             <textarea id="message" name="infrastructure_specs" rows="4" placeholder="Specify your architectural infrastructure (MIL-STD-1553, Arinc 429, Kafka, local HSM...)" required style="width: 100%; padding: 10px; margin-bottom: 20px; background: #050913; border: 1px solid var(--border); color: #fff; border-radius: 4px; font-family: inherit;"></textarea>
+
+            <!-- CODE DE SÉCURITÉ RGPD POUR LE FORMULAIRE DE DÉFENSE -->
+            <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
+                <input type="checkbox" id="rgpd_defense" name="rgpd_consent_checked" value="YES" required style="width: auto; margin-top: 4px; cursor: pointer;">
+                <label for="rgpd_defense" style="font-size: 0.85rem; color: #64748b; cursor: pointer; line-height: 1.4; font-family: monospace;">
+                    [CLASSIFIED DATA REGULATION] By checking this box, I authorize the secure processing of my professional identity and technical requirements solely for the allocation of tactical verification tokens, in strict compliance with EU GDPR.
+                </label>
+            </div>
             
-            <button type="submit" class="btn" id="btn-submit-1" style="width: 100%;">Submit Request & Proceed to Step 2 (NDA)</button>
+            <button type="submit" class="btn" id="btn-submit-1" style="width: 100%;">Submit Request & Proceed to Step 2</button>
         </form>
         </div>
     </section>
@@ -69,44 +77,42 @@
     </footer>
 
     <script>
-    document.getElementById('form-step-1').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        
-        const btn = document.getElementById('btn-submit-1');
-        btn.innerText = "Processing Clearance...";
-        btn.disabled = true;
+        document.getElementById('form-defense-step-1').addEventListener('submit', function(event) {
+            event.preventDefault(); // Bloque la redirection sauvage native
+            const btn = document.getElementById('btn-def-1');
+            btn.innerText = "PROCESSING CLEARANCE REQ...";
+            btn.disabled = true;
 
-        const formData = new FormData(this);
-        const data = Object.fromEntries(formData.entries());
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
 
-        //# SAUVEGARDE DES COORDONNÉES DANS LE NAVIGATEUR ---
-        localStorage.setItem('prospect_email', data.email);
-        localStorage.setItem('prospect_name', data.name);
-        localStorage.setItem('prospect_phone', data.phone);
-        localStorage.setItem('prospect_institution', data.institution);
-        //-------------------------------------------------------------
+            // Enregistrement des mémoires de session tactique
+            localStorage.setItem('def_email', data.email);
+            localStorage.setItem('def_phone', data.phone);
+            localStorage.setItem('def_name', data.name);
+            localStorage.setItem('def_institution', data.institution);
 
-        try {
-            const response = await fetch("https://formspree.io/f/xvkpaqae", {
+            const forceRedirect = setTimeout(() => {
+                window.location.href = "cahier_des_charges_defense.html";
+            }, 1200);
+
+            // Aiguillage réseau vers votre clé de formulaire de Défense
+            fetch("https://formspree.io/f/xvkpaqae", {
                 method: "POST",
                 body: JSON.stringify(data),
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
+                headers: { 
+                    'Accept': 'application/json', 
+                    'Content-Type': 'application/json' 
                 }
+            })
+            .then(() => {
+                clearTimeout(forceRedirect);
+                window.location.href = "cahier_des_charges_defense.html";
+            })
+            .catch(() => {
+                // Le timeout prend le relais si le réseau militaire est restrictif
             });
-
-            if (response.ok) {
-                window.location.href = "https://sbourgeois1.github.io/secure_crypto_defense/nda_signature.html";
-            } else {
-                alert("Transmission error. Please verify your credentials.");
-                btn.innerText = "Submit Request & Proceed to Step 2 (NDA)";
-                btn.disabled = false;
-            }
-        } catch (error) {
-            window.location.href = "https://sbourgeois1.github.io/secure_crypto_defense/nda_signature.html";
-        }
-    });
+        });
     </script>
 
     <script>

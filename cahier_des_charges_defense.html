@@ -166,7 +166,7 @@
                 <input type="hidden" id="hidden_def_phone" name="phone">
                 <input type="hidden" id="hidden_def_name" name="name">
                 <input type="hidden" id="hidden_def_institution" name="institution">
-                <input type="hidden" id="hidden_def_message" name="message_contraintes_step1">
+                <input type="hidden" id="hidden_def_message" name="message">
 
                 <div>
                     <label for="legal_signature">Digital Legal Signature (Type Full Name & Title/Rank) :</label>
@@ -218,14 +218,14 @@
         const phoneStocke = localStorage.getItem('def_phone') || 'Unspecified';
         const nameStocke = localStorage.getItem('def_name') || 'Classified';
         const instStocke = localStorage.getItem('def_institution') || 'Classified Agency';
-        const msgStocke  = localStorage.getItem('def_message') || 'No infrastructure constraints specified';
+        const messageStocke  = localStorage.getItem('def_message') || 'No infrastructure constraints specified';
 
         // Injection physique dans les champs masqués du formulaire
         document.getElementById('hidden_def_email').value = emailStocke;
         document.getElementById('hidden_def_phone').value = phoneStocke;
         document.getElementById('hidden_def_name').value = nameStocke;
         document.getElementById('hidden_def_institution').value = instStocke;
-        document.getElementById('hidden_def_message').value = msgStocke; // Injection du message
+        document.getElementById('hidden_def_message').value = messageStocke;
 
         // Gestion de l'affichage du bandeau cookie
         if (!localStorage.getItem("cookies_defense_accepted")) {
